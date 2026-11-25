@@ -1,0 +1,14 @@
+name: Maksukortin yksikkötestit
+on: push
+jobs:
+  testit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Asenna pytest
+        run: python -m pip install pytest
+      - name: Aja saldotestit
+        run: python -m pytest -v test_saldo.py
